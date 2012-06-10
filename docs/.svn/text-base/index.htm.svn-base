@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>
+			YALC Dokumentation
+		</title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			img {
+				border: 0px;
+			}
+			.classdiagram {
+				text-align: center;
+			}
+			body {
+				margin: 10px;
+			}
+			h1, h2, div, pre {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>
+			YALC Dokumentation
+		</h1>
+		<h2>
+			Allgemeine Information.
+		</h2>
+		<div>
+			YALC steht f&uuml;r Yet Another Link Checker und ist ein in Java 
+			geschriebener Web-Crawler, der die Hyperlinks eines HTML-Dokuments oder 
+			eines gesamten Dokumentenbaums &uuml;berpr&uuml;ft und in einer 
+			&uuml;bersichtilichen Statistik anzeigt.
+		</div>
+		<h2>
+			Ben&ouml;tigte Bibliotheken.
+		</h2>
+		<div>
+			Um YALC kompilieren oder ausf&uuml;hren zu k&ouml;nnen, wird der Java 
+			Htmlparser in der Version 1.6 oder h&ouml;her ben&ouml;tigt. Zu finden
+			unter <a href="http://htmlparser.sourceforge.net/">http://htmlparser.sourceforge.net/</a>.
+			'make prepare' l&auml;dt das Archiv vom Server der FH Wedel runter und
+			entpackt es in das Verzeichnis "extern".
+		</div>
+		<h2>
+			Kompilieren.
+		</h2>
+		<div>
+			Um YALC zu kompilieren, muss die Klasse YALC.java aus dem src Verzeicnis
+			kompiliert werden. Dabei muss der Compiler wissen, wo die 
+			zus&auml;tzlichen Bibliotheken zu finden sind. Der Befehl lautet
+			'javac -d bin -cp src:extern/htmlparser1_6/lib/htmlparser.jar src/de/fhw/swp/yalc/YALC.java' 
+			oder einfacher 'make compile'.
+		</div>
+		<h2>
+			Installieren.
+		</h2>
+		<div>
+			YALC muss nicht installiert, sondern nur entpackt und kompiliert werden. 
+			Schon ist YALC startbereit! 
+		</div>
+		<h2>
+			Starten.
+		</h2>
+		<div>
+			YALC kann durch einen Aufruf von YALC aus dem bin Verzeichnis gestartet
+			werden. Der Befehl lautet: 'java -cp bin:extern/htmlparser1_6/lib/htmlparser.jar de.fhw.swp.yalc.YALC'.
+			'make run' startet YALC mit den Beispielargumenten: http://www.fh-wedel.de/~bra/ -c .*~bra.* -e .*~bra.* -i .*icons.* -p fhw-cache.fh-wedel.de:3128 -f result.html -v
+		</div>
+		<h2>
+			Benutzung.
+		</h2>
+		<div>
+			Die Optionen von YALC sind wie folgt:
+		</div>
+		<pre>YALC [option...] url [url...]
+	Die Reihenfolge der angegebenen regulaeren Ausdruecke bestimmt deren Prioritaet!
+	-h, --help                  Hilfe ausgeben
+	-c, --content &lt;url&gt;         Inhalt aller URLs ueberpruefen, auf die der regulaere Ausdruck &lt;url&gt;, passt.
+	-i, --ignore &lt;url&gt;          Alle URLs, auf die der regulaere Ausdruck &lt;url&gt; passt, ignorieren
+	-x, -e, --exist &lt;url&gt;       Alle URLs ueberpruefen, auf die der regulaere Ausdruck &lt;url&gt; passt
+	-p, --proxy &lt;server[:port]&gt; Proxyserver (z.B.: www.proxy.de oder www.proxy.de:1234))
+	-v, --verbose               Ausgabe auf stderr, was das Programm gerade macht.</pre>
+		<h2>
+			Makefile.
+		</h2>
+		<div>
+			Das Makefile reicht die Arbeit an 'ant' mit dem jeweiligen Target weiter.
+			Es beinhaltet folgende Targets:
+		</div>
+		<pre>
+all:               Externe Bibliotheken runterladen, entpacken und kompilieren
+prepare:           Externe Bibliotheken runterladen und entpacken
+doc:               Dokumentation erzeugen
+compile:           Programm kompilieren
+run:               Programm mit einem Beispielaufruf mit dem Proxy fuer's LAN ausfuehren
+clean:             Automatisch erzeugte Verzeichnisse loeschen
+jar:               Aus den Dateien ein jar-Archiv erzeugen
+run_wlan:          Programm mit mit einem Beispielaufruf mit dem Proxy fuer's WLAN ausfuehren
+run_without_proxy: Programm mit mit einem Beispielaufruf ohne Proxy ausfuehren</pre>
+		<h2>
+			build.xml.
+		</h2>
+		<div>
+			Die build.xml enth&auml;lt die gleichen Targets wie das Makefile.
+		</div>
+		<h2>
+			Javadoc.
+		</h2>
+		<div>
+			Durch 'make doc' wird Javadoc angesto&szlig;en. Die Dokumentation ist im
+			Verzeichnis docs/javadoc zu finden.
+		</div>
+		<h2>
+			Klassendiagramm.
+		</h2>
+		<div>
+			Die einzelnen Klassen im Diagramm sind anklickbar. Durch Anklicken wird 
+			die entsprechende Javadoc Seite aufgerufen (vorausgesetzt, die 
+			Dokumentation wurde bereits erzeugt).
+		</div>
+		<div class="classdiagram">
+			<img src="classdiagram.png" alt="Class diagram" usemap="#classdiagram" />
+			<map name="classdiagram" id="classdiagram">
+				<area shape="rect" coords="1, 0, 127, 26" href="javadoc/de/fhw/swp/yalc/OptonsParser.html" alt="OptionsParser" />
+				<area shape="rect" coords="301, 0, 389, 26" href="javadoc/de/fhw/swp/yalc/Crawler.html" alt="Crawler" />
+				<area shape="rect" coords="572, 0, 697, 26" href="javadoc/de/fhw/swp/yalc/URLContainer.html" alt="URLContainer" />
+				<area shape="rect" coords="437, 136, 535, 162" href="javadoc/de/fhw/swp/yalc/URLTools.html" alt="URLTools" />
+				<area shape="rect" coords="151, 284, 223, 310" href="javadoc/de/fhw/swp/yalc/YALC.html" alt="YALC" />
+				<area shape="rect" coords="589, 284, 679, 310" href="javadoc/de/fhw/swp/yalc/Checker.html" alt="Checker" />
+				<area shape="rect" coords="1, 526, 81, 552" href="javadoc/de/fhw/swp/yalc/Output.html" alt="Output" />
+				<area shape="rect" coords="282, 526, 406, 552" href="javadoc/de/fhw/swp/yalc/CheckedURLs.html" alt="CheckedURLs" />
+				<area shape="rect" coords="580, 526, 687, 552" href="javadoc/de/fhw/swp/yalc/URLDetails.html" alt="URLDetails" />
+			</map>
+		</div>
+	</body>
+</html>

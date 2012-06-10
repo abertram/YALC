@@ -1,0 +1,217 @@
+/**
+ * 
+ */
+package de.fhw.swp.yalc;
+
+import java.util.List;
+import java.util.Vector;
+import java.util.Map;
+import java.util.LinkedHashMap;
+
+/**
+ * Vom User eingegebene Optionen.
+ * 
+ * @author Ruediger Klante
+ * @author Alexander Bertram
+ */
+public class Options {
+	/**
+	 * Start-URLs, von denen aus alle erreichbaren URLs ueberprueft werden.
+	 */
+	private List<String> startURLs = new Vector<String>();
+
+	/**
+	 * URLs, deren Inhalt rekursiv ueberprueft wird.
+	 */
+	private List<String> contentURLs = new Vector<String>();
+
+	/**
+	 * URLs, die ignoriert werden.
+	 */
+	private List<String> ignoreURLs = new Vector<String>();
+
+	/**
+	 * URLs, die nur auf Existenz ueberprueft werden.
+	 */
+	private List<String> existURLs = new Vector<String>();
+
+	/**
+	 * Regulaere Ausdruecke, die als URL-Filter (content, exist, ignore)
+	 * verwendet werden.
+	 */
+	private Map<String, String> urlFilters = new LinkedHashMap<String, String>();
+
+	/**
+	 * Datei fuer die Ausgabe.
+	 */
+	private String file = null;
+
+	/**
+	 * Proxyserver.
+	 */
+	private Proxy proxy = null;
+
+	/**
+	 * Flag, ob dem User mitgeteilt wird, was grad passiert.
+	 */
+	private boolean verbose;
+
+	/**
+	 * Gibt die Start-URLs zurueck.
+	 * 
+	 * @return Start-URLs.
+	 */
+	public List<String> getStartURLs() {
+		return startURLs;
+	}
+
+	/**
+	 * Gibt die Exist-URLs zurueck.
+	 * 
+	 * @return Exist-URLs.
+	 */
+	public List<String> getExistURLs() {
+		return existURLs;
+	}
+
+	/**
+	 * Gibt die Content-URLs zurueck.
+	 * 
+	 * @return Content-URLs.
+	 */
+	public List<String> getContentURLs() {
+		return contentURLs;
+	}
+
+	/**
+	 * Gibt die Ignore-URLs zurueck.
+	 * 
+	 * @return Ignore-URLs.
+	 */
+	public List<String> getIgnoreURLs() {
+		return ignoreURLs;
+	}
+
+	/**
+	 * Gibt URL-Filter zurueck.
+	 * 
+	 * @return URL-Filter
+	 */
+	public Map<String, String> getURLFilters() {
+		return urlFilters;
+	}
+
+	/**
+	 * Gibt den Proxy zurueck.
+	 * 
+	 * @return Proxy.
+	 */
+	public Proxy getProxy() {
+		return proxy;
+	}
+
+	/**
+	 * Setzt den Proxy.
+	 * 
+	 * @param proxy
+	 *            Proxy zum Setzen.
+	 */
+	public void setProxy(Proxy proxy) {
+		this.proxy = proxy;
+	}
+
+	/**
+	 * Fuegt die URL zu den Start-URLs hinzu.
+	 * 
+	 * @param url
+	 *            URL, die hinzugefuegt werden soll.
+	 */
+	public void addStartURL(String url) {
+		startURLs.add(url);
+	}
+
+	/**
+	 * Fuegt die URL zu den Content-URLs hinzu.
+	 * 
+	 * @param url
+	 *            URL, die hinzugefuegt werden soll.
+	 */
+	public void addContentURL(String url) {
+		if (urlFilters.containsKey(url) && urlFilters.get(url).equals("e")) {
+			urlFilters.put(url, "ce");
+			contentURLs.add(url);
+		} else if (!urlFilters.containsKey(url)) {
+			urlFilters.put(url, "c");
+			contentURLs.add(url);
+		}
+	}
+
+	/**
+	 * Fuegt die URL zu den Ignore-URLs hinzu.
+	 * 
+	 * @param url
+	 *            URL, die hinzugefuegt werden soll.
+	 */
+	public void addIgnoreURL(String url) {
+		if (!urlFilters.containsKey(url)) {
+			urlFilters.put(url, "i");
+			ignoreURLs.add(url);
+		}
+	}
+
+	/**
+	 * Fuegt die URL zu den Exist-URLs hinzu.
+	 * 
+	 * @param url
+	 *            URL, die hinzugefuegt werden soll.
+	 */
+	public void addExistURL(String url) {
+		if (urlFilters.containsKey(url) && urlFilters.get(url).equals("c")) {
+			urlFilters.put(url, "ce");
+			existURLs.add(url);
+		} else if (!urlFilters.containsKey(url)) {
+			urlFilters.put(url, "e");
+			existURLs.add(url);
+		}
+
+	}
+
+	/**
+	 * Gibt die Ausgabedatei zurueck.
+	 * 
+	 * @return Ausgabe-Datei.
+	 */
+	public String getFile() {
+		return file;
+	}
+
+	/**
+	 * Setzt die Ausgabedatei.
+	 * 
+	 * @param file
+	 *            Name der Ausgabedatei.
+	 */
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+	/**
+	 * Gibt zurueck, ob das Programm ausgeben soll, was grad gemacht wird.
+	 * 
+	 * @return True, wenn das Programm ausgeben soll, was grad gemacht wird.
+	 */
+	public boolean isVerbose() {
+		return verbose;
+	}
+
+	/**
+	 * Setzt das Flag und bestimmt, ob das Programm ausgeben soll, was grad
+	 * gemacht wird.
+	 * 
+	 * @param verbose
+	 *            Flag, ob das Programm ausgeben soll, was grad gemacht wird.
+	 */
+	public void setVerbose(boolean verbose) {
+		this.verbose = verbose;
+	}
+}

@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/swp/swp19/!svn/ver/204/trunk/src/de/fhw/swp/yalc
+END
+Crawler.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/swp/swp19/!svn/ver/202/trunk/src/de/fhw/swp/yalc/Crawler.java
+END
+Output.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/swp/swp19/!svn/ver/195/trunk/src/de/fhw/swp/yalc/Output.java
+END
+Proxy.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/swp/swp19/!svn/ver/195/trunk/src/de/fhw/swp/yalc/Proxy.java
+END
+URLTools.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/swp/swp19/!svn/ver/213/trunk/src/de/fhw/swp/yalc/URLTools.java
+END
+Checker.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/swp/swp19/!svn/ver/208/trunk/src/de/fhw/swp/yalc/Checker.java
+END
+HtmlOutput.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/swp/swp19/!svn/ver/214/trunk/src/de/fhw/swp/yalc/HtmlOutput.java
+END
+URLContainer.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/swp/swp19/!svn/ver/195/trunk/src/de/fhw/swp/yalc/URLContainer.java
+END
+OptionsParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/swp/swp19/!svn/ver/205/trunk/src/de/fhw/swp/yalc/OptionsParser.java
+END
+URLDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/swp/swp19/!svn/ver/195/trunk/src/de/fhw/swp/yalc/URLDetails.java
+END
+YALC.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/swp/swp19/!svn/ver/197/trunk/src/de/fhw/swp/yalc/YALC.java
+END
+Options.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/swp/swp19/!svn/ver/211/trunk/src/de/fhw/swp/yalc/Options.java
+END
+URLDetailsVector.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/swp/swp19/!svn/ver/212/trunk/src/de/fhw/swp/yalc/URLDetailsVector.java
+END
+CheckedURLs.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/swp/swp19/!svn/ver/209/trunk/src/de/fhw/swp/yalc/CheckedURLs.java
+END

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="YALC" default="all">
+	<property name="srcdir" location="src" />
+	<property name="bindir" location="bin" />
+	<property name="externdir" location="extern" />
+	<property name="htmlparser.zip" location="${externdir}/htmlparser1_6_20060610.zip" />
+	<property name="htmlparser" location="${externdir}/htmlparser1_6" />
+	<property name="htmlparserlibdir" location="${htmlparser}/lib" />
+	<property name="htmlparserjar" location="${htmlparserlibdir}/htmlparser.jar" />
+	<property name="docsdir" location="docs" />
+
+	<target name="doc">
+		<javadoc sourcepath="${srcdir}" packagenames="de.fhw.swp.yalc" 
+			destdir="${docsdir}/javadoc" classpath="${htmlparserjar}" 
+			windowtitle="YALC documentation" access="private" />
+	</target>
+
+	<target name="prepare">
+  	<mkdir dir="${externdir}" />
+  	<get src="http://netcologne.dl.sourceforge.net/project/htmlparser/htmlparser/1.6/htmlparser1_6_20060610.zip" dest="${externdir}" />
+		<unzip src="${htmlparser.zip}" dest="${externdir}" />
+	</target>
+
+	<target name="compile" depends="prepare">
+		<mkdir dir="${bindir}" />
+		<javac srcdir="${srcdir}" destdir="${bindir}" classpath="${htmlparserjar}" fork="true" />
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="de.fhw.swp.yalc.YALC" classpath="${bindir}:${htmlparserjar}" fork="true">
+			<arg line="http://www.fh-wedel.de/~bra/ -c .*~bra.* -e .*~bra.* -i .*icons.* -p fhw-cache.fh-wedel.de:3128 -f result.html -v" />
+		</java>
+	</target>
+
+	<target name="run_wlan" depends="compile">
+		<java classname="de.fhw.swp.yalc.YALC" classpath="${bindir}:${htmlparserjar}" fork="true">
+			<arg line="http://www.fh-wedel.de/~bra/ -c .*~bra.* -e .*~bra.* -i .*icons.* -p cwlan-cache.fh-wedel.de:3128 -f result.html -v" />
+		</java>
+	</target>
+	
+	<target name="run_without_proxy" depends="compile">
+		<java classname="de.fhw.swp.yalc.YALC" classpath="${bindir}:${htmlparserjar}" fork="true">
+			<arg line="http://www.fh-wedel.de/~bra/ -c .*~bra.* -e .*~bra.* -i .*icons.* -f result.html -v" />
+		</java>
+	</target>
+	
+	<target name="run_si_bra" depends="compile">
+		<java classname="de.fhw.swp.yalc.YALC" classpath="${bindir}:${htmlparserjar}" fork="true">
+			<arg line="http://www.fh-wedel.de/~bra http://www.fh-wedel.de/~si -c .*(~bra|~si).* -e .*(~bra|~si).* -i .*(seminar).* -f result.html -v" />
+		</java>
+	</target>
+
+	<target name="all" depends="compile" />
+
+	<target name="stop">
+	</target>
+
+	<target name="clean">
+		<delete dir="${bindir}" />
+		<delete dir="${docsdir}/javadoc" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${bindir}" />
+		<jar destfile="${bindir}/YALC.jar" basedir="${bindir}" />
+	</target>
+</project>
+

@@ -1,0 +1,19 @@
+YALC - Yet Another Link Checker
+
+Ruediger Klante
+Alexander Bertram
+
+Installationsanleitung
+
+1.
+
+Auschecken des Projekts in einen beliebigen Ordner.
+
+2.
+
+'make' zum Runterladen von benoetigten Bibliotheken, Entpacken 
+und Kompilieren.
+
+3.
+
+'make run' zum Ausfuehren des Programms mit einem Beispielaufruf.
